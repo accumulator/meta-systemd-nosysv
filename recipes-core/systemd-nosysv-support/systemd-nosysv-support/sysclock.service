@@ -1,0 +1,12 @@
+[Unit]
+Description=System Clock Service. syncs between hw and system clock w. fallback
+After=systemd-remount-fs.service
+
+[Service]
+RemainAfterExit=yes
+ExecStart=/sbin/sysclock.sh
+ExecStop=/sbin/sysclock.sh --save
+Type=oneshot
+
+[Install]
+WantedBy=basic.target
