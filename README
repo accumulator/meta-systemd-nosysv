@@ -1,0 +1,11 @@
+The aim of this OpenEmbedded layer is to provide replacements
+for the SysV skeleton scripts that are provided by the (amongst 
+others) sysvinit, sysv-inittab and initscripts packages.
+
+Adding this layer will explicitly disable systemd's SysV compat
+functionality.
+
+This layer is *NOT* intended for providing systemd .service files
+for regular packages that are usually started from /etc/rc{2,3,4,5}.d.
+Those packages should provide the necessary systemd files themselves.
+
