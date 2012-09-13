@@ -1,0 +1,11 @@
+[Unit]
+Description=Package Manager postinst
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/opkg-cl configure
+ExecStartPost=/bin/systemctl disable %n
+
+[Install]
+WantedBy=basic.target
