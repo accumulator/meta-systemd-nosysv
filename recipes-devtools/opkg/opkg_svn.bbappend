@@ -6,6 +6,9 @@ inherit systemd
 
 SRC_URI += "file://run-postinst.service"
 
-SYSTEMD_PACKAGES = "${PN}"
-SYSTEMD_SERVICE = "run-postinst.service"
-SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_SERVICE_${PN} = "run-postinst.service"
+
+do_install_append() {
+    install -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/run-postinst.service ${D}${systemd_unitdir}/system
+}
